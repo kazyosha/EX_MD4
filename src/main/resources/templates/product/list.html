@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>Quản lý sản phẩm</title>
 
-        <!-- Bootstrap & Icons -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     </head>
@@ -20,7 +19,6 @@
             </div>
 
             <div class="card-body">
-                <!-- Form tìm kiếm -->
                 <form class="row g-3 align-items-end mb-4" th:action="@{/auction/products}" method="get">
                     <div class="col-md-3">
                         <label class="form-label">Tên sản phẩm</label>
@@ -51,7 +49,6 @@
                     </div>
                 </form>
 
-                <!-- Form xóa -->
                 <form th:action="@{/auction/products/delete}" method="post" id="deleteForm">
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-light text-center">
@@ -66,8 +63,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="p, stat : ${products}">
-                            <td class="text-center" th:text="${(products.number * products.size) + stat.count}"></td>
+                        <tr th:each="p, iterStat : ${products.content}">
+                            <td class="text-center" th:text="${products.number * products.size + iterStat.index + 1}"></td>
                             <td class="text-center">
                                 <input type="checkbox" name="ids" th:value="${p.id}">
                             </td>
@@ -87,7 +84,6 @@
                         </tbody>
                     </table>
 
-                    <!-- Nút xóa và phân trang -->
                     <div class="d-flex justify-content-between align-items-center">
                         <button type="button" class="btn btn-danger btn-sm" id="deleteBtn">
                             <i class="bi bi-trash"></i> Xóa đã chọn

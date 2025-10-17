@@ -46,10 +46,6 @@ public class ProductService {
         return productRepository.save(existing);
     }
 
-
-    public Iterable<Product> findAll() {
-        return productRepository.findAll();
-    }
     public Product findById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
